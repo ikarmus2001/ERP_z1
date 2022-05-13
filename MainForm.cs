@@ -23,7 +23,7 @@ namespace Halaczkiewicz_z1
         public MainForm(SqlConnection passedConnection)
         {
             cnxn = passedConnection;
-            dataGridView1.DataMember = "Studenci";
+            //dataGridView1.DataMember = "Studenci";
             InitializeComponent();
             UpdateDataGridView();
         }
@@ -42,31 +42,31 @@ namespace Halaczkiewicz_z1
 
         private void UpdateDataGridView()
         {
-            string updateString = "SELECT * FROM Studenci;";
-            SqlDataAdapter dataAdapter = new(updateString, cnxn);
+            string updateString = "SELECT * FROM Students;";
+            //SqlDataAdapter dataAdapter = new(updateString, cnxn);
             if (cnxn.State != ConnectionState.Open) { cnxn.Open(); }
-            dataAdapter.Fill(ds);  // Also updates existing rows
+            new SqlDataAdapter(updateString, cnxn).Fill(ds);
+            //dataAdapter.Fill(ds);  // Also updates existing rows
             cnxn.Close();
             dataGridView1.DataSource = ds;
         }
 
         private void DataGridView1_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
         {
-            //DeleteRecursivelyViaID(ds[e.RowIndex]);
+            //DeleteRecursivelyViaID(ds.Tables[dataGridView1.SelectedRows].Select("IDStudent = " + e.ToString);
         }
 
         private void DeleteRecursivelyViaID(int RowIndex)
         {
             // TODO: Fix sql strings variables names
-            string sql_com = "DELETE FROM Students WHERE IDStudent=" +
-                 ds[RowIndex]["IDStudent"] +
-                 ";";
-            SqlCommand command = new(sql_com);
+            //string sql_com = "DELETE FROM Students WHERE IDStudent=" +
+                 //ds[RowIndex]["IDStudent"] + ";";
+            //SqlCommand command = new(sql_com);
             
-            if (cnxn.State != ConnectionState.Open) { cnxn.Open(); }
-            command.ExecuteNonQuery();
-            cnxn.Close();
-            UpdateDataGridView();
+            //if (cnxn.State != ConnectionState.Open) { cnxn.Open(); }
+            //command.ExecuteNonQuery();
+            //cnxn.Close();
+            //UpdateDataGridView();
         }
     }
 }

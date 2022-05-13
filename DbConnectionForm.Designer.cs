@@ -45,6 +45,7 @@
             this.textBox_Login.Name = "textBox_Login";
             this.textBox_Login.Size = new System.Drawing.Size(100, 23);
             this.textBox_Login.TabIndex = 0;
+            this.textBox_Login.Text = "user_1";
             this.textBox_Login.TextChanged += new System.EventHandler(this.Textbox_Credentials_TextChanged);
             // 
             // button_SignIn
@@ -93,6 +94,7 @@
             this.textBox_Password.Name = "textBox_Password";
             this.textBox_Password.Size = new System.Drawing.Size(100, 23);
             this.textBox_Password.TabIndex = 4;
+            this.textBox_Password.Text = "user";
             this.textBox_Password.UseSystemPasswordChar = true;
             this.textBox_Password.TextChanged += new System.EventHandler(this.Textbox_Credentials_TextChanged);
             // 
@@ -119,7 +121,7 @@
             this.textBox_DatabaseName.Name = "textBox_DatabaseName";
             this.textBox_DatabaseName.Size = new System.Drawing.Size(100, 23);
             this.textBox_DatabaseName.TabIndex = 8;
-            this.textBox_DatabaseName.Text = "master";
+            this.textBox_DatabaseName.Text = "tmp_base";
             // 
             // DbConnectionForm
             // 
