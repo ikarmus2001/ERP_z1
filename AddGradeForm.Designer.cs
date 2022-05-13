@@ -28,98 +28,140 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.comboBox_Student = new System.Windows.Forms.ComboBox();
+            this.label_Student = new System.Windows.Forms.Label();
+            this.maskedTextBox_Date = new System.Windows.Forms.MaskedTextBox();
+            this.label_Date = new System.Windows.Forms.Label();
+            this.textBox_Comment = new System.Windows.Forms.TextBox();
+            this.label_Comment = new System.Windows.Forms.Label();
+            this.button_Add = new System.Windows.Forms.Button();
+            this.button_Cancel = new System.Windows.Forms.Button();
+            this.label_StudentIndex = new System.Windows.Forms.Label();
+            this.comboBox_StudentIndex = new System.Windows.Forms.ComboBox();
+            this.comboBox_Grade = new System.Windows.Forms.ComboBox();
+            this.label_Grade = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // comboBox1
+            // comboBox_Student
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(62, 65);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 23);
-            this.comboBox1.TabIndex = 0;
+            this.comboBox_Student.FormattingEnabled = true;
+            this.comboBox_Student.Location = new System.Drawing.Point(12, 31);
+            this.comboBox_Student.Name = "comboBox_Student";
+            this.comboBox_Student.Size = new System.Drawing.Size(192, 23);
+            this.comboBox_Student.TabIndex = 0;
             // 
-            // label1
+            // label_Student
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(61, 35);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 15);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "label1";
+            this.label_Student.AutoSize = true;
+            this.label_Student.Location = new System.Drawing.Point(12, 13);
+            this.label_Student.Name = "label_Student";
+            this.label_Student.Size = new System.Drawing.Size(51, 15);
+            this.label_Student.TabIndex = 1;
+            this.label_Student.Text = "Student:";
             // 
-            // maskedTextBox1
+            // maskedTextBox_Date
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(61, 199);
-            this.maskedTextBox1.Mask = "00/00/0000";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(100, 23);
-            this.maskedTextBox1.TabIndex = 2;
-            this.maskedTextBox1.ValidatingType = typeof(System.DateTime);
+            this.maskedTextBox_Date.Location = new System.Drawing.Point(12, 140);
+            this.maskedTextBox_Date.Mask = "00/00/0000";
+            this.maskedTextBox_Date.Name = "maskedTextBox_Date";
+            this.maskedTextBox_Date.Size = new System.Drawing.Size(192, 23);
+            this.maskedTextBox_Date.TabIndex = 2;
+            this.maskedTextBox_Date.ValidatingType = typeof(System.DateTime);
             // 
-            // label2
+            // label_Date
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(61, 167);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 15);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "label2";
+            this.label_Date.AutoSize = true;
+            this.label_Date.Location = new System.Drawing.Point(12, 122);
+            this.label_Date.Name = "label_Date";
+            this.label_Date.Size = new System.Drawing.Size(34, 15);
+            this.label_Date.TabIndex = 3;
+            this.label_Date.Text = "Date:";
             // 
-            // textBox1
+            // textBox_Comment
             // 
-            this.textBox1.Location = new System.Drawing.Point(61, 274);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 23);
-            this.textBox1.TabIndex = 4;
+            this.textBox_Comment.Location = new System.Drawing.Point(12, 248);
+            this.textBox_Comment.Name = "textBox_Comment";
+            this.textBox_Comment.Size = new System.Drawing.Size(192, 23);
+            this.textBox_Comment.TabIndex = 4;
             // 
-            // label3
+            // label_Comment
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(62, 239);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 15);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "label3";
+            this.label_Comment.AutoSize = true;
+            this.label_Comment.Location = new System.Drawing.Point(12, 230);
+            this.label_Comment.Name = "label_Comment";
+            this.label_Comment.Size = new System.Drawing.Size(119, 15);
+            this.label_Comment.TabIndex = 5;
+            this.label_Comment.Text = "Comment (optional):";
             // 
-            // button1
+            // button_Add
             // 
-            this.button1.Location = new System.Drawing.Point(174, 402);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button_Add.Location = new System.Drawing.Point(129, 288);
+            this.button_Add.Name = "button_Add";
+            this.button_Add.Size = new System.Drawing.Size(75, 23);
+            this.button_Add.TabIndex = 6;
+            this.button_Add.Text = "Add";
+            this.button_Add.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // button_Cancel
             // 
-            this.button2.Location = new System.Drawing.Point(24, 402);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button_Cancel.Location = new System.Drawing.Point(12, 288);
+            this.button_Cancel.Name = "button_Cancel";
+            this.button_Cancel.Size = new System.Drawing.Size(75, 23);
+            this.button_Cancel.TabIndex = 7;
+            this.button_Cancel.Text = "Cancel";
+            this.button_Cancel.UseVisualStyleBackColor = true;
+            // 
+            // label_StudentIndex
+            // 
+            this.label_StudentIndex.AutoSize = true;
+            this.label_StudentIndex.Location = new System.Drawing.Point(12, 67);
+            this.label_StudentIndex.Name = "label_StudentIndex";
+            this.label_StudentIndex.Size = new System.Drawing.Size(83, 15);
+            this.label_StudentIndex.TabIndex = 8;
+            this.label_StudentIndex.Text = "Student index:";
+            // 
+            // comboBox_StudentIndex
+            // 
+            this.comboBox_StudentIndex.FormattingEnabled = true;
+            this.comboBox_StudentIndex.Location = new System.Drawing.Point(12, 85);
+            this.comboBox_StudentIndex.Name = "comboBox_StudentIndex";
+            this.comboBox_StudentIndex.Size = new System.Drawing.Size(192, 23);
+            this.comboBox_StudentIndex.TabIndex = 9;
+            // 
+            // comboBox_Grade
+            // 
+            this.comboBox_Grade.FormattingEnabled = true;
+            this.comboBox_Grade.Location = new System.Drawing.Point(12, 193);
+            this.comboBox_Grade.Name = "comboBox_Grade";
+            this.comboBox_Grade.Size = new System.Drawing.Size(192, 23);
+            this.comboBox_Grade.TabIndex = 10;
+            // 
+            // label_Grade
+            // 
+            this.label_Grade.AutoSize = true;
+            this.label_Grade.Location = new System.Drawing.Point(12, 175);
+            this.label_Grade.Name = "label_Grade";
+            this.label_Grade.Size = new System.Drawing.Size(41, 15);
+            this.label_Grade.TabIndex = 11;
+            this.label_Grade.Text = "Grade:";
             // 
             // AddGradeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(274, 450);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.maskedTextBox1);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.comboBox1);
+            this.ClientSize = new System.Drawing.Size(224, 339);
+            this.Controls.Add(this.label_Grade);
+            this.Controls.Add(this.comboBox_Grade);
+            this.Controls.Add(this.comboBox_StudentIndex);
+            this.Controls.Add(this.label_StudentIndex);
+            this.Controls.Add(this.button_Cancel);
+            this.Controls.Add(this.button_Add);
+            this.Controls.Add(this.label_Comment);
+            this.Controls.Add(this.textBox_Comment);
+            this.Controls.Add(this.label_Date);
+            this.Controls.Add(this.maskedTextBox_Date);
+            this.Controls.Add(this.label_Student);
+            this.Controls.Add(this.comboBox_Student);
             this.Name = "AddGradeForm";
             this.Text = "AddGradeForm";
             this.ResumeLayout(false);
@@ -129,13 +171,17 @@
 
         #endregion
 
-        private ComboBox comboBox1;
-        private Label label1;
-        private MaskedTextBox maskedTextBox1;
-        private Label label2;
-        private TextBox textBox1;
-        private Label label3;
-        private Button button1;
-        private Button button2;
+        private ComboBox comboBox_Student;
+        private Label label_Student;
+        private MaskedTextBox maskedTextBox_Date;
+        private Label label_Date;
+        private TextBox textBox_Comment;
+        private Label label_Comment;
+        private Button button_Add;
+        private Button button_Cancel;
+        private Label label_StudentIndex;
+        private ComboBox comboBox_StudentIndex;
+        private ComboBox comboBox_Grade;
+        private Label label_Grade;
     }
 }

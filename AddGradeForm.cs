@@ -14,6 +14,7 @@ namespace Halaczkiewicz_z1
     {
         public AddGradeForm()
         {
+
             InitializeComponent();
         }
     }

@@ -35,7 +35,7 @@
             // 
             // button_AddGrade
             // 
-            this.button_AddGrade.Location = new System.Drawing.Point(47, 23);
+            this.button_AddGrade.Location = new System.Drawing.Point(12, 9);
             this.button_AddGrade.Name = "button_AddGrade";
             this.button_AddGrade.Size = new System.Drawing.Size(100, 30);
             this.button_AddGrade.TabIndex = 0;
@@ -46,7 +46,7 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 59);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 45);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 25;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -58,11 +58,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 436);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button_AddGrade);
             this.Name = "MainForm";
-            this.Text = "Form1";
+            this.Text = "MainForm";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 

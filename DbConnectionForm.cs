@@ -23,6 +23,8 @@ namespace Halaczkiewicz_z1
         private void EstablishDbConnection()
         {
             // Data Source=LENOVOTHINKPAD-\SQLEXPRESS;Initial Catalog=master;Persist Security Info=True;User ID=;Password=*
+            // main pc
+            // Server=localhost\SQLEXPRESS;Database=master;Trusted_Connection=True;
             SqlConnection cnxn;
             // "DRIVER={ODBC Driver 17 for SQL Server};
             string connectionString = "Data Source=" +
