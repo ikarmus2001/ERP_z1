@@ -19,13 +19,33 @@ namespace Halaczkiewicz_z1
     public partial class MainForm : Form
     {
         SqlConnection cnxn;
-        DataSet ds = new();
+        DataTable dt = new();
+        string mainViewQuery = @"
+            SELECT 
+                Students.Student_ID,
+	            Student_name        'Imiê',
+	            Student_surname     'Nazwisko',
+	            Student_birthdate   'Data urodzenia',
+	            AVG(Grade)          'Œrednia'
+            FROM
+                Students FULL JOIN
+                    Grades ON Students.Student_ID = Grades.Student_ID
+            GROUP BY Students.Student_ID, Student_name, Student_surname, Student_birthdate; ";
+
+
         public MainForm(SqlConnection passedConnection)
         {
             cnxn = passedConnection;
-            //dataGridView1.DataMember = "Studenci";
             InitializeComponent();
             UpdateDataGridView();
+        }
+
+        private void UpdateDataGridView()
+        {
+            if (cnxn.State != ConnectionState.Open) { cnxn.Open(); }
+            new SqlDataAdapter(mainViewQuery, cnxn).Fill(dt);
+            cnxn.Close();
+            dataGridView1.DataSource = dt;
         }
 
         private void Button_AddGrade_Click(object sender, EventArgs e)
@@ -40,16 +60,7 @@ namespace Halaczkiewicz_z1
             }
         }
 
-        private void UpdateDataGridView()
-        {
-            string updateString = "SELECT * FROM Students;";
-            //SqlDataAdapter dataAdapter = new(updateString, cnxn);
-            if (cnxn.State != ConnectionState.Open) { cnxn.Open(); }
-            new SqlDataAdapter(updateString, cnxn).Fill(ds);
-            //dataAdapter.Fill(ds);  // Also updates existing rows
-            cnxn.Close();
-            dataGridView1.DataSource = ds;
-        }
+
 
         private void DataGridView1_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
         {
@@ -60,9 +71,9 @@ namespace Halaczkiewicz_z1
         {
             // TODO: Fix sql strings variables names
             //string sql_com = "DELETE FROM Students WHERE IDStudent=" +
-                 //ds[RowIndex]["IDStudent"] + ";";
+            //ds[RowIndex]["IDStudent"] + ";";
             //SqlCommand command = new(sql_com);
-            
+
             //if (cnxn.State != ConnectionState.Open) { cnxn.Open(); }
             //command.ExecuteNonQuery();
             //cnxn.Close();

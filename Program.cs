@@ -41,6 +41,7 @@ namespace Halaczkiewicz_z1
                 }
             }
 
+            
             Application.Run(new MainForm(cnxn));
             
         }

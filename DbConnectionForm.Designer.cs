@@ -63,15 +63,17 @@
             // label_ServerName
             // 
             this.label_ServerName.AutoSize = true;
+            this.label_ServerName.Enabled = false;
             this.label_ServerName.Location = new System.Drawing.Point(12, 9);
             this.label_ServerName.Name = "label_ServerName";
             this.label_ServerName.Size = new System.Drawing.Size(75, 15);
-            this.label_ServerName.TabIndex = 2;
+            this.label_ServerName.TabIndex = 0;
             this.label_ServerName.Text = "Server name:";
             // 
             // label_Login
             // 
             this.label_Login.AutoSize = true;
+            this.label_Login.Enabled = false;
             this.label_Login.Location = new System.Drawing.Point(12, 110);
             this.label_Login.Name = "label_Login";
             this.label_Login.Size = new System.Drawing.Size(37, 15);
@@ -81,6 +83,7 @@
             // label_Password
             // 
             this.label_Password.AutoSize = true;
+            this.label_Password.Enabled = false;
             this.label_Password.Location = new System.Drawing.Point(12, 161);
             this.label_Password.Name = "label_Password";
             this.label_Password.Size = new System.Drawing.Size(57, 15);
@@ -101,6 +104,7 @@
             // label_DatabaseName
             // 
             this.label_DatabaseName.AutoSize = true;
+            this.label_DatabaseName.Enabled = false;
             this.label_DatabaseName.Location = new System.Drawing.Point(12, 61);
             this.label_DatabaseName.Name = "label_DatabaseName";
             this.label_DatabaseName.Size = new System.Drawing.Size(91, 15);
@@ -112,8 +116,8 @@
             this.textBox_Server.Location = new System.Drawing.Point(12, 27);
             this.textBox_Server.Name = "textBox_Server";
             this.textBox_Server.Size = new System.Drawing.Size(211, 23);
-            this.textBox_Server.TabIndex = 7;
-            this.textBox_Server.Text = "LENOVOTHINKPAD-\\SQLEXPRESS";
+            this.textBox_Server.TabIndex = 1;
+            this.textBox_Server.Text = "Kacper-PC\\SQLEXPRESS";
             // 
             // textBox_DatabaseName
             // 
@@ -121,7 +125,7 @@
             this.textBox_DatabaseName.Name = "textBox_DatabaseName";
             this.textBox_DatabaseName.Size = new System.Drawing.Size(211, 23);
             this.textBox_DatabaseName.TabIndex = 8;
-            this.textBox_DatabaseName.Text = "tmp_base";
+            this.textBox_DatabaseName.Text = "students_db";
             // 
             // DbConnectionForm
             // 

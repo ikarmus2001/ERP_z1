@@ -1,0 +1,160 @@
+--CREATE DATABASE students_db;
+--GO
+
+USE students_db;
+GO
+
+CREATE TABLE Students (
+Student_ID int NOT NULL PRIMARY KEY,
+Student_name VARCHAR(15) NOT NULL,
+Student_surname VARCHAR(30) NOT NULL,
+Student_birthdate DATE
+);
+
+
+--inserts are split due to date gen errors (i.e. 31.02 :> )
+
+INSERT INTO Students VALUES 
+(33000, '£ukasz', 'Wójcik', CONVERT(DATE, '20.06.2002', 104)),
+(33001, '£ukasz', 'Kowalski', CONVERT(DATE, '11.12.2000', 104)),  
+(33002, 'Wojciech', 'Nowak', CONVERT(DATE, '21.09.2002', 104)),   
+(33003, 'Adrian', 'Wiœniewski', CONVERT(DATE, '14.03.2000', 104)),
+(33004, 'Kacper', 'Kowal', CONVERT(DATE, '02.12.2001', 104)),     
+(33005, '£ukasz', 'Wiœniewski', CONVERT(DATE, '30.09.2002', 104));
+
+INSERT INTO Students VALUES 
+(33006, 'Paulina', 'Kowal', CONVERT(DATE, '27.03.2001', 104)),    
+(33007, 'Szymon', 'Kowal', CONVERT(DATE, '03.08.2002', 104)),     
+(33008, '£ukasz', 'Wiœniewski', CONVERT(DATE, '20.11.2002', 104)),
+(33009, '£ukasz', 'Wójcik', CONVERT(DATE, '27.11.2002', 104)),    
+(33010, 'Marcelina', 'Kowal', CONVERT(DATE, '26.11.2002', 104));
+
+INSERT INTO Students VALUES 
+(33011, 'Jolanta', 'Kowal', CONVERT(DATE, '16.06.2000', 104)),
+(33012, 'Jolanta', 'Wiœniewski', CONVERT(DATE, '05.07.2001', 104)),
+(33013, 'Adrian', 'Wiœniewski', CONVERT(DATE, '11.01.2002', 104)),
+(33014, 'Paulina', 'Wójcik', CONVERT(DATE, '26.03.2002', 104)),
+(33015, 'Kacper', 'Kowalski', CONVERT(DATE, '02.01.2002', 104)),
+(33016, 'Szymon', 'Kowalski', CONVERT(DATE, '19.09.2001', 104)),
+(33017, 'Wojciech', 'Wiœniewski', CONVERT(DATE, '10.05.2002', 104)),
+(33018, 'Paulina', 'Adamiak', CONVERT(DATE, '03.03.2001', 104));
+
+INSERT INTO Students VALUES 
+(33019, 'Wojciech', 'Wiœniewski', CONVERT(DATE, '03.02.2002', 104)),
+(33020, 'Kacper', 'Adamiak', CONVERT(DATE, '21.08.2002', 104)),
+(33021, 'Jolanta', 'Kowal', CONVERT(DATE, '15.06.2002', 104)),
+(33022, 'Jolanta', 'Nowak', CONVERT(DATE, '05.08.2000', 104)),
+(33023, 'Kacper', 'Wiœniewski', CONVERT(DATE, '14.05.2002', 104)),
+(33024, '£ukasz', 'Kowalski', CONVERT(DATE, '22.05.2002', 104)),
+(33025, 'Marcelina', 'SQLowski', CONVERT(DATE, '01.10.2000', 104)),
+(33026, 'Wojciech', 'Adamiak', CONVERT(DATE, '11.02.2002', 104)),
+(33027, 'Adrian', 'Nowak', CONVERT(DATE, '26.11.2001', 104)),
+(33028, 'Adrian', 'Wójcik', CONVERT(DATE, '22.12.2000', 104)),
+(33029, 'Adrian', 'Adamiak', CONVERT(DATE, '10.01.2001', 104));
+
+INSERT INTO Students VALUES 
+(33030, 'Paulina', 'Adamiak', CONVERT(DATE, '13.12.2001', 104)),
+(33031, '£ukasz', 'Kowalski', CONVERT(DATE, '09.03.2000', 104)),
+(33032, 'Szymon', 'Nowak', CONVERT(DATE, '21.01.2000', 104)),
+(33033, 'Szymon', 'Nowak', CONVERT(DATE, '08.06.2002', 104)),
+(33034, 'Marcelina', 'Wiœniewski', CONVERT(DATE, '23.02.2002', 104)),
+(33035, 'Marcelina', 'Kowal', CONVERT(DATE, '15.10.2002', 104)),
+(33036, 'Szymon', 'Kowalski', CONVERT(DATE, '22.10.2001', 104)),
+(33037, 'Szymon', 'Nowak', CONVERT(DATE, '07.12.2000', 104)),
+(33038, 'Marcelina', 'Kowalski', CONVERT(DATE, '29.11.2002', 104)),
+(33039, 'Szymon', 'Adamiak', CONVERT(DATE, '29.08.2001', 104))
+;
+
+CREATE TABLE Grades (
+Student_ID int NOT NULL REFERENCES Students(Student_ID),
+Grade tinyint NOT NULL,
+Grade_date date,
+Grade_comment VARCHAR(100)
+);
+
+
+INSERT INTO Grades VALUES
+(33000, 1, CONVERT(DATE, '13.05.2022', 104), ''),
+(33000, 5, CONVERT(DATE, '27.02.2022', 104), ''),
+(33001, 1, CONVERT(DATE, '25.09.2022', 104), ''),
+(33002, 2, CONVERT(DATE, '22.11.2022', 104), ''),
+(33003, 7, CONVERT(DATE, '23.11.2022', 104), ''),
+(33003, 4, CONVERT(DATE, '19.11.2022', 104), ''),
+(33004, 6, CONVERT(DATE, '20.09.2022', 104), ''),
+(33004, 4, CONVERT(DATE, '27.05.2022', 104), ''),
+(33004, 2, CONVERT(DATE, '04.09.2022', 104), ''),
+(33004, 3, CONVERT(DATE, '28.07.2022', 104), ''),
+(33006, 4, CONVERT(DATE, '09.11.2022', 104), ''),
+(33006, 5, CONVERT(DATE, '15.09.2022', 104), ''),
+(33006, 3, CONVERT(DATE, '15.01.2022', 104), ''),
+(33007, 4, CONVERT(DATE, '26.12.2022', 104), ''),
+(33008, 7, CONVERT(DATE, '18.08.2022', 104), ''),
+(33008, 2, CONVERT(DATE, '04.02.2022', 104), ''),
+(33008, 3, CONVERT(DATE, '05.06.2022', 104), ''),
+(33008, 3, CONVERT(DATE, '25.05.2022', 104), ''),
+(33010, 6, CONVERT(DATE, '02.08.2022', 104), ''),
+(33010, 3, CONVERT(DATE, '15.05.2022', 104), ''),
+(33010, 3, CONVERT(DATE, '15.04.2022', 104), ''),
+(33010, 2, CONVERT(DATE, '25.06.2022', 104), ''),
+(33011, 5, CONVERT(DATE, '16.12.2022', 104), ''),
+(33011, 7, CONVERT(DATE, '15.12.2022', 104), ''),
+(33011, 2, CONVERT(DATE, '24.12.2022', 104), ''),
+(33011, 2, CONVERT(DATE, '16.11.2022', 104), ''),
+(33013, 6, CONVERT(DATE, '13.01.2022', 104), ''),
+(33013, 3, CONVERT(DATE, '26.10.2022', 104), ''),
+(33014, 1, CONVERT(DATE, '17.09.2022', 104), ''),
+(33014, 4, CONVERT(DATE, '20.03.2022', 104), ''),
+(33014, 5, CONVERT(DATE, '08.08.2022', 104), ''),
+(33014, 5, CONVERT(DATE, '16.11.2022', 104), ''),
+(33015, 1, CONVERT(DATE, '09.12.2022', 104), ''),
+(33018, 2, CONVERT(DATE, '23.11.2022', 104), ''),
+(33018, 2, CONVERT(DATE, '18.04.2022', 104), ''),
+(33018, 1, CONVERT(DATE, '26.08.2022', 104), ''),
+(33019, 2, CONVERT(DATE, '07.03.2022', 104), ''),
+(33019, 1, CONVERT(DATE, '22.08.2022', 104), ''),
+(33019, 5, CONVERT(DATE, '10.08.2022', 104), ''),
+(33020, 3, CONVERT(DATE, '09.05.2022', 104), ''),
+(33022, 6, CONVERT(DATE, '11.06.2022', 104), ''),
+(33022, 2, CONVERT(DATE, '28.07.2022', 104), ''),
+(33022, 3, CONVERT(DATE, '22.06.2022', 104), ''),
+(33022, 3, CONVERT(DATE, '27.04.2022', 104), ''),
+(33024, 4, CONVERT(DATE, '17.10.2022', 104), ''),
+(33024, 2, CONVERT(DATE, '09.03.2022', 104), ''),
+(33024, 1, CONVERT(DATE, '14.04.2022', 104), ''),
+(33025, 1, CONVERT(DATE, '08.09.2022', 104), ''),
+(33025, 7, CONVERT(DATE, '16.06.2022', 104), ''),
+(33025, 1, CONVERT(DATE, '12.11.2022', 104), ''),
+(33025, 5, CONVERT(DATE, '19.08.2022', 104), ''),
+(33026, 3, CONVERT(DATE, '22.08.2022', 104), ''),
+(33026, 5, CONVERT(DATE, '17.06.2022', 104), ''),
+(33026, 7, CONVERT(DATE, '04.09.2022', 104), ''),
+(33027, 3, CONVERT(DATE, '05.10.2022', 104), ''),
+(33027, 2, CONVERT(DATE, '20.11.2022', 104), ''),
+(33027, 4, CONVERT(DATE, '01.09.2022', 104), ''),
+(33028, 3, CONVERT(DATE, '01.03.2022', 104), ''),
+(33028, 6, CONVERT(DATE, '15.09.2022', 104), ''),
+(33029, 7, CONVERT(DATE, '26.01.2022', 104), ''),
+(33030, 3, CONVERT(DATE, '04.06.2022', 104), ''),
+(33030, 1, CONVERT(DATE, '04.07.2022', 104), ''),
+(33030, 5, CONVERT(DATE, '16.02.2022', 104), ''),
+(33031, 6, CONVERT(DATE, '18.11.2022', 104), ''),
+(33031, 6, CONVERT(DATE, '19.07.2022', 104), ''),
+(33032, 4, CONVERT(DATE, '17.09.2022', 104), ''),
+(33032, 6, CONVERT(DATE, '24.10.2022', 104), ''),
+(33032, 6, CONVERT(DATE, '18.09.2022', 104), ''),
+(33033, 3, CONVERT(DATE, '16.03.2022', 104), ''),
+(33035, 7, CONVERT(DATE, '19.01.2022', 104), ''),
+(33035, 2, CONVERT(DATE, '11.06.2022', 104), ''),
+(33035, 6, CONVERT(DATE, '24.10.2022', 104), ''),
+(33035, 7, CONVERT(DATE, '27.05.2022', 104), ''),
+(33036, 4, CONVERT(DATE, '16.04.2022', 104), ''),
+(33036, 2, CONVERT(DATE, '25.03.2022', 104), ''),
+(33037, 7, CONVERT(DATE, '19.10.2022', 104), ''),
+(33037, 7, CONVERT(DATE, '28.11.2022', 104), ''),
+(33037, 3, CONVERT(DATE, '17.06.2022', 104), ''),
+(33037, 4, CONVERT(DATE, '19.01.2022', 104), ''),
+(33038, 6, CONVERT(DATE, '27.08.2022', 104), ''),
+(33038, 1, CONVERT(DATE, '15.01.2022', 104), ''),
+(33038, 5, CONVERT(DATE, '25.07.2022', 104), ''),
+(33038, 7, CONVERT(DATE, '28.01.2022', 104), '')
+;
