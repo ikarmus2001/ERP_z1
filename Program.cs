@@ -11,38 +11,17 @@ namespace Halaczkiewicz_z1
         static void Main(string[] args)
         {
             ApplicationConfiguration.Initialize();
+            SqlConnection? cnxn;
 
-
-            SqlConnection cnxn;
-
-            if (args.Length > 0)
+            cnxn = DatabaseOperations.EstablishingConnection(args);
+            if (cnxn != null)
             {
-                // TODO: pls fix it, args serialization
-                string connectionString = args[0];
-                cnxn = new SqlConnection(connectionString);
-                if (cnxn.State != ConnectionState.Open)
-                {
-                    throw new Exception("ConnectionError: Invalid connection string or db unavailable");
-                }
+                Application.Run(new MainForm(cnxn));
             }
             else
             {
-                using (var connectionForm = new DbConnectionForm())
-                {
-                    var result = connectionForm.ShowDialog();
-                    if (result == DialogResult.OK)
-                    {
-                        cnxn = connectionForm.DbConnection;
-                    }
-                    else
-                    {
-                        return;
-                    }
-                }
+                return;
             }
-
-            
-            Application.Run(new MainForm(cnxn));
             
         }
     }

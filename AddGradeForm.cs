@@ -1,4 +1,6 @@
-﻿namespace Halaczkiewicz_z1
+﻿using System.Data.SqlClient;
+
+namespace Halaczkiewicz_z1
 {
     public partial class AddGradeForm : Form
     {
