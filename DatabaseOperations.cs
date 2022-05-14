@@ -9,5 +9,7 @@ namespace Halaczkiewicz_z1
     internal class DatabaseOperations
     {
         //static void ExecuteQuery(string sqlString, connec)  // czy wyrzucanie sql do osobnej klasy ma sens?
+
+        // establish connection
     }
 }

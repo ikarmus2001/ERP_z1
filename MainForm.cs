@@ -11,6 +11,8 @@
     Najlepiej ¿eby to by³ MSSQL
     Pod³¹czenie do bazy danych proszê umieœciæ w pliku konfiguracyjnym
 */
+
+
 using System.Data;
 using System.Data.SqlClient;
 
@@ -61,23 +63,47 @@ namespace Halaczkiewicz_z1
         }
 
 
-
         private void DataGridView1_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
         {
             //DeleteRecursivelyViaID(ds.Tables[dataGridView1.SelectedRows].Select("IDStudent = " + e.ToString);
         }
 
-        private void DeleteRecursivelyViaID(int RowIndex)
+        private void DeleteRecursivelyViaID(DataGridViewCell cell_index)
         {
             // TODO: Fix sql strings variables names
-            //string sql_com = "DELETE FROM Students WHERE IDStudent=" +
-            //ds[RowIndex]["IDStudent"] + ";";
-            //SqlCommand command = new(sql_com);
+            string delete_string = @"
+            DELETE FROM Grades 
+            WHERE Student_ID = " + cell_index.ToString() + ";";
+            
+            if (cnxn.State != ConnectionState.Open) { cnxn.Open(); }
+            SqlCommand cmd = new(delete_string, cnxn);
+            cmd.ExecuteNonQuery();
+            
+        }
 
-            //if (cnxn.State != ConnectionState.Open) { cnxn.Open(); }
-            //command.ExecuteNonQuery();
-            //cnxn.Close();
-            //UpdateDataGridView();
+        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            // TODO Exclude column 'Œrednia' from editing
+            if (e.ColumnIndex == 4) // ugh ik that's hardcoded, not sure how to handle it
+            {
+                System.Console.Beep();
+            }
+        }
+
+        private void DataGridView_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            string msg = "Próbujesz usun¹æ rekord, mo¿e to spowodowaæ kaskadowe usuniêcie odpowiadaj¹cych danych. Kontynuowaæ?";
+            DialogResult result = MessageBox.Show("Ostrze¿enie!", msg, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.OK)
+            {
+
+                // TODO delete rows
+                DeleteRecursivelyViaID(e.Row.Cells["Student_ID"]);
+            }
+            else
+            {
+                e.Cancel = true;
+            }
         }
     }
 }

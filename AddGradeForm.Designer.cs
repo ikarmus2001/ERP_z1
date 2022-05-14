@@ -101,6 +101,7 @@
             this.button_Add.TabIndex = 6;
             this.button_Add.Text = "Add";
             this.button_Add.UseVisualStyleBackColor = true;
+            this.button_Add.Click += new System.EventHandler(this.Button_Add_Click);
             // 
             // button_Cancel
             // 
@@ -110,6 +111,7 @@
             this.button_Cancel.TabIndex = 7;
             this.button_Cancel.Text = "Cancel";
             this.button_Cancel.UseVisualStyleBackColor = true;
+            this.button_Cancel.Click += new System.EventHandler(this.Button_Cancel_Click);
             // 
             // label_StudentIndex
             // 
