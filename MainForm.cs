@@ -81,6 +81,7 @@ namespace Halaczkiewicz_z1
         private void button_uncommitedChanges_Click(object sender, EventArgs e)
         {
             // TODO: show dt.GetChanges()
+            dt.GetChanges()
         }
     }
 }
