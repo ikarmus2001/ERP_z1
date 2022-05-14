@@ -6,11 +6,47 @@ namespace Halaczkiewicz_z1
 {
     internal abstract class DatabaseOperations
     {
-        //static void ExecuteQuery(string sqlString, connec)  // czy wyrzucanie sql do osobnej klasy ma sens?
+        //public static ? ExecuteQuery(string sqlString, connec)
+        //{
 
-        // establish connection
+        //}
+        public void StageDeleteRow(DataGridViewRow deletedRow)
+        {
+            // TODO: Staging deleted rows
+        }
+
+        private int DeleteStudentsGrades(DataTable dt, SqlConnection connection)
+        {
+            // TODO Test method
+
+            int rowsAffected = 0;
+            DataTable? deletedStudents = dt.GetChanges(DataRowState.Deleted);
+            if (deletedStudents != null)
+            {
+                DataRowCollection dsRows = deletedStudents.Rows;
+                string delete_string = "DELETE FROM Grades WHERE Student_ID = " + dsRows[0].ToString();
+
+                if (deletedStudents.Rows.Count > 1)
+                {
+                    dsRows.RemoveAt(0);
+                    foreach (int Student_ID in dsRows)
+                    {
+                        delete_string += " || " + Student_ID.ToString();
+                    }
+                }
+                delete_string += ';';
+
+                if (connection.State != ConnectionState.Open) { connection.Open(); }
+                SqlCommand cmd = new(delete_string, connection);
+                rowsAffected = cmd.ExecuteNonQuery();
+                connection.Close();
+            }
+            return rowsAffected;
+        }
+
         public static SqlConnection? EstablishingConnection(string[] args)
         {
+            // overloading method would be better idea
             SqlConnection cnxn;
 
             if (args.Length > 0)
