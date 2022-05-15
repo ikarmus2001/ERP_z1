@@ -10,9 +10,43 @@ namespace Halaczkiewicz_z1
         //{
 
         //}
-        public void StageDeleteRow(DataGridViewRow deletedRow)
+
+        public void CommitChanges(DataTable dt, SqlConnection connection)
         {
-            // TODO: Staging deleted rows
+            CommitDelete(dt, connection);
+            CommitAdd(dt, connection);
+            CommitUpdate(dt, connection);
+        }
+
+        private void CommitUpdate(DataTable dt, SqlConnection connection)
+        {
+            UpdateStudents(dt, connection);
+        }
+
+        private void UpdateStudents(DataTable dt, SqlConnection connection)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void CommitAdd(DataTable dt, SqlConnection connection)
+        {
+            AddStudents(dt, connection);
+        }
+
+        private void AddStudents(DataTable dt, SqlConnection connection)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void CommitDelete(DataTable dt, SqlConnection connection)
+        {
+            DeleteStudentsGrades(dt, connection);
+            DeleteStudents(dt, connection);
+        }
+
+        private void DeleteStudents(DataTable dt, SqlConnection connection)
+        {
+            throw new NotImplementedException();
         }
 
         private int DeleteStudentsGrades(DataTable dt, SqlConnection connection)

@@ -23,6 +23,11 @@ namespace Halaczkiewicz_z1
             dataGridView_UncommitedChanges.DataSource = allChanges[0];  // Added records first
         }
 
+        private void trackBar_UncommitedChanges_ValueChanged(object sender, EventArgs e)
+        {
+            dataGridView_UncommitedChanges.DataSource = allChanges[trackBar_UncommitedChanges.Value];
+        }
+
         
     }
     

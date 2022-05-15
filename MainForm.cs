@@ -23,8 +23,6 @@ namespace Halaczkiewicz_z1
         SqlConnection cnxn;
         DataTable dt = new();
 
-        DataTable dt_uncommitedChanges = new();
-
         string mainViewQuery = @"
             SELECT 
                 Students.Student_ID,
@@ -80,8 +78,16 @@ namespace Halaczkiewicz_z1
 
         private void button_uncommitedChanges_Click(object sender, EventArgs e)
         {
-            // TODO: show dt.GetChanges()
-            dt.GetChanges()
+            using (var form = new UncommitedChangesForm(dt))
+            {
+                var result = form.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+
+                }
+            }
+            
+
         }
     }
 }

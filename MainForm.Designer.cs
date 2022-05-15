@@ -54,7 +54,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 25;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(776, 379);
+            this.dataGridView1.Size = new System.Drawing.Size(688, 384);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.DataGridView_UserDeletingRow);
             // 
@@ -64,7 +64,7 @@
             // 
             // button_uncommitedChanges
             // 
-            this.button_uncommitedChanges.Location = new System.Drawing.Point(649, 9);
+            this.button_uncommitedChanges.Location = new System.Drawing.Point(561, 9);
             this.button_uncommitedChanges.Name = "button_uncommitedChanges";
             this.button_uncommitedChanges.Size = new System.Drawing.Size(139, 30);
             this.button_uncommitedChanges.TabIndex = 4;
@@ -76,7 +76,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 436);
+            this.ClientSize = new System.Drawing.Size(712, 441);
             this.Controls.Add(this.button_uncommitedChanges);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button_AddGrade);
