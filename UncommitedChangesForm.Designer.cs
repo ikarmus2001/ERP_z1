@@ -51,12 +51,10 @@
             // 
             this.trackBar_UncommitedChanges.LargeChange = 1;
             this.trackBar_UncommitedChanges.Location = new System.Drawing.Point(254, 12);
-            this.trackBar_UncommitedChanges.Maximum = 3;
-            this.trackBar_UncommitedChanges.Minimum = 1;
+            this.trackBar_UncommitedChanges.Maximum = 2;
             this.trackBar_UncommitedChanges.Name = "trackBar_UncommitedChanges";
             this.trackBar_UncommitedChanges.Size = new System.Drawing.Size(148, 45);
             this.trackBar_UncommitedChanges.TabIndex = 1;
-            this.trackBar_UncommitedChanges.Value = 1;
             // 
             // label_Added
             // 

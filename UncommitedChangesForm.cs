@@ -22,5 +22,8 @@ namespace Halaczkiewicz_z1
             InitializeComponent();
             dataGridView_UncommitedChanges.DataSource = allChanges[0];  // Added records first
         }
+
+        
     }
+    
 }
