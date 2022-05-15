@@ -134,8 +134,11 @@
             // 
             this.comboBox_Grade.FormattingEnabled = true;
             this.comboBox_Grade.Location = new System.Drawing.Point(12, 193);
+            this.comboBox_Grade.MaxDropDownItems = 6;
+            this.comboBox_Grade.MaxLength = 1;
             this.comboBox_Grade.Name = "comboBox_Grade";
             this.comboBox_Grade.Size = new System.Drawing.Size(192, 23);
+            this.comboBox_Grade.Sorted = true;
             this.comboBox_Grade.TabIndex = 10;
             // 
             // label_Grade

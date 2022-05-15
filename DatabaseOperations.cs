@@ -10,6 +10,22 @@ namespace Halaczkiewicz_z1
         //{
 
         //}
+        public void CommitGrade(int studentIndex, string date, int grade, string? comment, SqlConnection connection)
+        {
+        // CREATE TABLE Grades(
+        //  Student_ID int NOT NULL REFERENCES Students(Student_ID),
+        //  Grade tinyint NOT NULL,
+        //  Grade_date date,
+        //  Grade_comment VARCHAR(100)
+        // );
+
+            string gradeCommit = "INSERT INTO Grades VALUES (" + studentIndex + ", " + grade.ToString() + ",  CONVERT(DATE, '" + date + "', 104));";
+
+            if (connection.State != ConnectionState.Open) { connection.Open(); }
+            SqlCommand cmd = new(gradeCommit, connection);
+            cmd.ExecuteNonQuery();
+            connection.Close();
+        }
 
         public void CommitChanges(DataTable dt, SqlConnection connection)
         {
@@ -18,6 +34,9 @@ namespace Halaczkiewicz_z1
             CommitUpdate(dt, connection);
         }
 
+        #region Commits
+
+        #region Updates
         private void CommitUpdate(DataTable dt, SqlConnection connection)
         {
             UpdateStudents(dt, connection);
@@ -27,7 +46,8 @@ namespace Halaczkiewicz_z1
         {
             throw new NotImplementedException();
         }
-
+        #endregion
+        #region Adds
         private void CommitAdd(DataTable dt, SqlConnection connection)
         {
             AddStudents(dt, connection);
@@ -37,7 +57,8 @@ namespace Halaczkiewicz_z1
         {
             throw new NotImplementedException();
         }
-
+        #endregion
+        #region Deletes
         private void CommitDelete(DataTable dt, SqlConnection connection)
         {
             DeleteStudentsGrades(dt, connection);
@@ -77,7 +98,9 @@ namespace Halaczkiewicz_z1
             }
             return rowsAffected;
         }
+        #endregion
 
+        #endregion
         public static SqlConnection? EstablishingConnection(string[] args)
         {
             // overloading method would be better idea

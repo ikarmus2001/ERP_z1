@@ -53,11 +53,12 @@ namespace Halaczkiewicz_z1
 
         private void Button_AddGrade_Click(object sender, EventArgs e)
         {
-            using (var addGradeForm = new AddGradeForm())
+            using (var addGradeForm = new AddGradeForm(dt))
             {
                 DialogResult result = addGradeForm.ShowDialog();
                 if (result == DialogResult.OK)
                 {
+                    // TODO commit add grade
                     UpdateDataGridView();
                 }
             }

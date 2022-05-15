@@ -66,6 +66,7 @@ namespace Halaczkiewicz_z1
         private void Button_SignIn_Clickable(object sender, EventArgs e)
         {
             // Login + Password are required due to login method to my db
+            // TODO LATER: tho i should play sound when some field is empty, not disable button
             if (!String.IsNullOrEmpty(this.textBox_Login.Text) && !String.IsNullOrEmpty(this.textBox_Password.Text))
             {
                 this.button_SignIn.Enabled = true;
