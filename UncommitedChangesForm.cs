@@ -12,27 +12,15 @@ namespace Halaczkiewicz_z1
 {
     public partial class UncommitedChangesForm : Form
     {
-        DataTable? allChanges;
+        List<DataTable?> allChanges;
         public UncommitedChangesForm(DataTable dataTable)
         {
-            DataColumn dc = new DataColumn("Operation", typeof(char));
-            allChanges.Rows.Add(dataTable.GetChanges(DataRowState.Added).Columns.Add());
-            allChanges.Append(dataTable.GetChanges(DataRowState.Modified));
-            allChanges.Append(dataTable.GetChanges(DataRowState.Deleted));
-
-            foreach (DataRowCollection item in collection)
-            {
-
-            }
+            allChanges.Add(dataTable.GetChanges(DataRowState.Added));
+            allChanges.Add(dataTable.GetChanges(DataRowState.Modified));
+            allChanges.Add(dataTable.GetChanges(DataRowState.Deleted));
+            
             InitializeComponent();
-            unc
-
-        }
-
-        private void UncommitedChangesForm_Load(object sender, EventArgs e)
-        {
-
-
+            dataGridView_UncommitedChanges.DataSource = allChanges[0];  // Added records first
         }
     }
 }
