@@ -32,6 +32,7 @@ namespace Halaczkiewicz_z1
 
         private void UpdateDataGridView()
         {
+            dt = new();
             string mainViewQuery = @"
             SELECT 
                 Students.Student_ID,
