@@ -12,18 +12,28 @@ namespace Halaczkiewicz_z1
         //}
         public static void CommitGrade(string studentIndex, string date, string grade, string? comment, SqlConnection connection)
         {
-        // CREATE TABLE Grades(
-        //  Student_ID int NOT NULL REFERENCES Students(Student_ID),
-        //  Grade tinyint NOT NULL,
-        //  Grade_date date,
-        //  Grade_comment VARCHAR(100)
-        // );
+            // CREATE TABLE Grades(
+            //  Student_ID int NOT NULL REFERENCES Students(Student_ID),
+            //  Grade tinyint NOT NULL,
+            //  Grade_date date,
+            //  Grade_comment VARCHAR(100)
+            // );
 
-            string gradeCommit = "INSERT INTO Grades VALUES (" + studentIndex + ", " + grade.ToString() + ",  CONVERT(DATE, '" + date + "', 104));";
+            string gradeCommit = "BEGIN TRANSACTION addGrade; INSERT INTO Grades ";
+            if (comment == null || comment.Length == 0)
+            {
+                gradeCommit += "(Student_ID, Grade, Grade_date) VALUES (" + studentIndex + ", " + grade.ToString() + ",  CONVERT(DATE, '" + date + "', 104)); ";
+            }
+            else
+            {
+                gradeCommit += "VALUES(" + studentIndex + ", " + grade.ToString() + ", CONVERT(DATE, '" + date + "', 104), '" + comment + "'); ";
+            }
+            gradeCommit += "COMMIT TRANSACTION addGrade;";
 
             if (connection.State != ConnectionState.Open) { connection.Open(); }
             SqlCommand cmd = new(gradeCommit, connection);
             cmd.ExecuteNonQuery();
+            
             connection.Close();
         }
 

@@ -12,7 +12,12 @@ namespace Halaczkiewicz_z1
             InitializeComponent();
 
             // Populating comboboxes
-            comboBox_StudentIndex.DataSource = dt.Columns["Student_ID"];
+            List<int> ids = new List<int>();
+            foreach (DataRow row in dt.Rows)
+            {
+                ids.Add( (int) row[0]);
+            }
+            comboBox_StudentIndex.DataSource = ids;
             comboBox_Grade.DataSource = new List<string> { "1", "2", "3", "4", "5", "6" };
 
             DateTime dateTime = DateTime.UtcNow.Date;

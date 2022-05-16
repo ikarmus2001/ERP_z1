@@ -21,8 +21,7 @@ namespace Halaczkiewicz_z1
             else
             {
                 return;
-            }
-            
+            } 
         }
     }
 }

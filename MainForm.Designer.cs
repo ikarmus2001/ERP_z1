@@ -33,6 +33,7 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.mainFormBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.button_uncommitedChanges = new System.Windows.Forms.Button();
+            this.button_Update = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainFormBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -72,11 +73,22 @@
             this.button_uncommitedChanges.UseVisualStyleBackColor = true;
             this.button_uncommitedChanges.Click += new System.EventHandler(this.button_uncommitedChanges_Click);
             // 
+            // button_Update
+            // 
+            this.button_Update.Location = new System.Drawing.Point(118, 9);
+            this.button_Update.Name = "button_Update";
+            this.button_Update.Size = new System.Drawing.Size(94, 30);
+            this.button_Update.TabIndex = 5;
+            this.button_Update.Text = "Update";
+            this.button_Update.UseVisualStyleBackColor = true;
+            this.button_Update.Click += new System.EventHandler(this.button1_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(712, 441);
+            this.Controls.Add(this.button_Update);
             this.Controls.Add(this.button_uncommitedChanges);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button_AddGrade);
@@ -94,5 +106,6 @@
         private DataGridView dataGridView1;
         private BindingSource mainFormBindingSource;
         private Button button_uncommitedChanges;
+        private Button button_Update;
     }
 }

@@ -23,19 +23,6 @@ namespace Halaczkiewicz_z1
         SqlConnection cnxn;
         DataTable dt = new();
 
-        string mainViewQuery = @"
-            SELECT 
-                Students.Student_ID,
-	            Student_name        'Imiê',
-	            Student_surname     'Nazwisko',
-	            Student_birthdate   'Data urodzenia',
-	            AVG(Grade)          'Œrednia'
-            FROM
-                Students FULL JOIN
-                    Grades ON Students.Student_ID = Grades.Student_ID
-            GROUP BY Students.Student_ID, Student_name, Student_surname, Student_birthdate; ";
-
-
         public MainForm(SqlConnection passedConnection)
         {
             cnxn = passedConnection;
@@ -45,10 +32,24 @@ namespace Halaczkiewicz_z1
 
         private void UpdateDataGridView()
         {
+            string mainViewQuery = @"
+            SELECT 
+                Students.Student_ID,
+	            Student_name                        'Name',
+	            Student_surname                     'Surname',
+	            Student_birthdate                   'Date of birth',
+	            ROUND(AVG(Cast(Grade as Float)), 2) 'Average score'
+            FROM
+                Students FULL JOIN
+                    Grades ON Students.Student_ID = Grades.Student_ID
+            GROUP BY Students.Student_ID, Student_name, Student_surname, Student_birthdate; ";
+            // AVG(Cast(e.employee_level as Float)) as avg_level
+
             if (cnxn.State != ConnectionState.Open) { cnxn.Open(); }
-            new SqlDataAdapter(mainViewQuery, cnxn).Fill(dt);
+            new SqlDataAdapter(mainViewQuery, cnxn).Fill(dt);  // That was meant to update values, not append new ones >:(
             cnxn.Close();
             dataGridView1.DataSource = dt;
+            dataGridView1.Update();
         }
 
         private void Button_AddGrade_Click(object sender, EventArgs e)
@@ -58,7 +59,7 @@ namespace Halaczkiewicz_z1
                 DialogResult result = addGradeForm.ShowDialog();
                 if (result == DialogResult.OK)
                 {
-                    // TODO commit add grade
+                    // Grade commited
                     UpdateDataGridView();
                 }
             }
@@ -89,6 +90,11 @@ namespace Halaczkiewicz_z1
             }
             
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            UpdateDataGridView();
         }
     }
 }
