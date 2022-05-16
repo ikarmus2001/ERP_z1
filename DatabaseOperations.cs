@@ -10,7 +10,7 @@ namespace Halaczkiewicz_z1
         //{
 
         //}
-        public void CommitGrade(int studentIndex, string date, int grade, string? comment, SqlConnection connection)
+        public static void CommitGrade(string studentIndex, string date, string grade, string? comment, SqlConnection connection)
         {
         // CREATE TABLE Grades(
         //  Student_ID int NOT NULL REFERENCES Students(Student_ID),

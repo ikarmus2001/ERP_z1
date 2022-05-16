@@ -5,22 +5,24 @@ namespace Halaczkiewicz_z1
 {
     public partial class AddGradeForm : Form
     {
+        SqlConnection connection;
 
-        public AddGradeForm(DataTable dt)
+        public AddGradeForm(DataTable dt, SqlConnection connection)
         {
             InitializeComponent();
 
             // Populating comboboxes
             comboBox_StudentIndex.DataSource = dt.Columns["Student_ID"];
-            comboBox_Grade.DataSource = new List<string>{"1", "2", "3", "4", "5", "6"};
+            comboBox_Grade.DataSource = new List<string> { "1", "2", "3", "4", "5", "6" };
 
             DateTime dateTime = DateTime.UtcNow.Date;
             maskedTextBox_Date.Text = dateTime.Date.ToString();  // check if date is correct
+            this.connection = connection;
         }
 
         private void Button_Add_Click(object sender, EventArgs e)
         {
-
+            DatabaseOperations.CommitGrade(comboBox_StudentIndex.Text, maskedTextBox_Date.Text, comboBox_Grade.Text, textBox_Comment.Text, connection);
             DialogResult = DialogResult.OK;
         }
 

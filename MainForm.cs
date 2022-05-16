@@ -53,7 +53,7 @@ namespace Halaczkiewicz_z1
 
         private void Button_AddGrade_Click(object sender, EventArgs e)
         {
-            using (var addGradeForm = new AddGradeForm(dt))
+            using (var addGradeForm = new AddGradeForm(dt, cnxn))
             {
                 DialogResult result = addGradeForm.ShowDialog();
                 if (result == DialogResult.OK)
