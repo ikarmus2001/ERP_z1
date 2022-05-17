@@ -6,6 +6,8 @@ namespace Halaczkiewicz_z1
 {
     internal abstract class DatabaseOperations
     {
+        // TODO: Refactor class using DataAdapters
+
         //public static ? ExecuteQuery(string sqlString, connec)
         //{
 
@@ -37,7 +39,7 @@ namespace Halaczkiewicz_z1
             connection.Close();
         }
 
-        public void CommitChanges(DataTable dt, SqlConnection connection)
+        public static void CommitChanges(DataTable dt, SqlConnection connection)
         {
             CommitDelete(dt, connection);
             CommitAdd(dt, connection);
@@ -47,40 +49,53 @@ namespace Halaczkiewicz_z1
         #region Commits
 
         #region Updates
-        private void CommitUpdate(DataTable dt, SqlConnection connection)
+        private static void CommitUpdate(DataTable dt, SqlConnection connection)
         {
             UpdateStudents(dt, connection);
         }
 
-        private void UpdateStudents(DataTable dt, SqlConnection connection)
+        private static void UpdateStudents(DataTable dt, SqlConnection connection)
         {
+            // TODO: guess I should use DataAdapter insted :/
             throw new NotImplementedException();
+
+            //var x = dt.GetChanges(DataRowState.Modified).Rows;
+            //if (x != null)
+            //{
+            //    string update = 
+            //        @"BEGIN TRANSACTION uStudents 
+            //        UPDATE Students SET ";
+            //    foreach (DataRow row in x)
+            //    {
+            //        //row[0];
+            //    }
+            //}
         }
         #endregion
         #region Adds
-        private void CommitAdd(DataTable dt, SqlConnection connection)
+        private static void CommitAdd(DataTable dt, SqlConnection connection)
         {
             AddStudents(dt, connection);
         }
 
-        private void AddStudents(DataTable dt, SqlConnection connection)
+        private static void AddStudents(DataTable dt, SqlConnection connection)
         {
             throw new NotImplementedException();
         }
         #endregion
         #region Deletes
-        private void CommitDelete(DataTable dt, SqlConnection connection)
+        private static void CommitDelete(DataTable dt, SqlConnection connection)
         {
             DeleteStudentsGrades(dt, connection);
             DeleteStudents(dt, connection);
         }
 
-        private void DeleteStudents(DataTable dt, SqlConnection connection)
+        private static void DeleteStudents(DataTable dt, SqlConnection connection)
         {
             throw new NotImplementedException();
         }
 
-        private int DeleteStudentsGrades(DataTable dt, SqlConnection connection)
+        private static int DeleteStudentsGrades(DataTable dt, SqlConnection connection)
         {
             // TODO Test method
 
