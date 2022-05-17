@@ -10,6 +10,7 @@ namespace Halaczkiewicz_z1
 
         static void Main(string[] args)
         {
+            
             ApplicationConfiguration.Initialize();
             SqlConnection? cnxn;
 

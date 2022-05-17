@@ -81,19 +81,19 @@ namespace Halaczkiewicz_z1
 
         private void button_uncommitedChanges_Click(object sender, EventArgs e)
         {
-            using (var form = new UncommitedChangesForm(dt))
+            using (var form = new UncommitedChangesForm(dt, cnxn))
             {
                 var result = form.ShowDialog();
                 if (result == DialogResult.OK)
                 {
-
+                    UpdateDataGridView();
                 }
             }
             
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button_Update_Click(object sender, EventArgs e)
         {
             UpdateDataGridView();
         }

@@ -13,31 +13,27 @@ namespace Halaczkiewicz_z1
 {
     public partial class UncommitedChangesForm : Form
     {
-        List<DataTable?> allChanges;
         DataTable dt;
         SqlConnection connection;
+        List<DataRowState> dataRowStates = new List<DataRowState> {DataRowState.Added, DataRowState.Deleted, DataRowState.Modified };
         public UncommitedChangesForm(DataTable dataTable, SqlConnection sqlConnection)
         {
-            allChanges.Add(dataTable.GetChanges(DataRowState.Added));
-            allChanges.Add(dataTable.GetChanges(DataRowState.Modified));
-            allChanges.Add(dataTable.GetChanges(DataRowState.Deleted));
-
             connection = sqlConnection;
             dt = dataTable;
 
             InitializeComponent();
-            dataGridView_UncommitedChanges.DataSource = allChanges[0];  // Added records first
+            dataGridView_UncommitedChanges.DataSource = dt.GetChanges(DataRowState.Added);  // Added records first
         }
 
         //not sure which will work
         private void trackBar_UncommitedChanges_ValueChanged(object sender, EventArgs e)
         {
-            dataGridView_UncommitedChanges.DataSource = allChanges[trackBar_UncommitedChanges.Value];
+            dataGridView_UncommitedChanges.DataSource = dataRowStates[trackBar_UncommitedChanges.Value];
         }
 
         private void trackBar_UncommitedChanges_Scroll(object sender, EventArgs e)
         {
-            dataGridView_UncommitedChanges.DataSource = allChanges[trackBar_UncommitedChanges.Value];
+            dataGridView_UncommitedChanges.DataSource = dataRowStates[trackBar_UncommitedChanges.Value];
             dataGridView_UncommitedChanges.Update();
         }
         // 
