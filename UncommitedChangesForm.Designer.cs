@@ -58,6 +58,7 @@
             this.trackBar_UncommitedChanges.Name = "trackBar_UncommitedChanges";
             this.trackBar_UncommitedChanges.Size = new System.Drawing.Size(148, 45);
             this.trackBar_UncommitedChanges.TabIndex = 1;
+            this.trackBar_UncommitedChanges.Scroll += new System.EventHandler(this.trackBar_UncommitedChanges_Scroll);
             this.trackBar_UncommitedChanges.ValueChanged += new System.EventHandler(this.trackBar_UncommitedChanges_ValueChanged);
             // 
             // label_Added
@@ -104,6 +105,7 @@
             this.button_Return.TabIndex = 6;
             this.button_Return.Text = "Return";
             this.button_Return.UseVisualStyleBackColor = true;
+            this.button_Return.Click += new System.EventHandler(this.button_Return_Click);
             // 
             // button_RevertChanges
             // 
@@ -113,6 +115,7 @@
             this.button_RevertChanges.TabIndex = 7;
             this.button_RevertChanges.Text = "Revert changes";
             this.button_RevertChanges.UseVisualStyleBackColor = true;
+            this.button_RevertChanges.Click += new System.EventHandler(this.button_RevertChanges_Click);
             // 
             // button_CommitToDatabase
             // 
@@ -122,6 +125,7 @@
             this.button_CommitToDatabase.TabIndex = 8;
             this.button_CommitToDatabase.Text = "Commit to db";
             this.button_CommitToDatabase.UseVisualStyleBackColor = true;
+            this.button_CommitToDatabase.Click += new System.EventHandler(this.button_CommitToDatabase_Click);
             // 
             // UncommitedChangesForm
             // 
