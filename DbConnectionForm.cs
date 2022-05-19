@@ -16,36 +16,29 @@ namespace Halaczkiewicz_z1
         public DbConnectionForm()
         {
             InitializeComponent();
+            // TODO: Read/Write options to config file
+
         }
 
         public SqlConnection DbConnection {get;set;}
         
         private void EstablishDbConnection()
         {
-            // Data Source=LENOVOTHINKPAD-\SQLEXPRESS;Initial Catalog=master;Persist Security Info=True;User ID=;Password=*
-            // main pc
-            // Server=localhost\SQLEXPRESS;Database=master;Trusted_Connection=True;
             SqlConnection cnxn;
-            // "DRIVER={ODBC Driver 17 for SQL Server};
-            string connectionString = "Data Source=" +
-                this.textBox_Server.Text +
-                ";Initial Catalog=" +
-                this.textBox_DatabaseName.Text +
-                ";User Id=" +
-                this.textBox_Login.Text +
-                ";Password=" +
-                this.textBox_Password.Text;
 
-            bool close_flag = false;
+            string connectionString = $"Data Source={textBox_Server.Text}; Initial Catalog={textBox_DatabaseName.Text}" +
+                $"; User Id={textBox_Login.Text}; Password={textBox_Password.Text}";
+
             try
             {
                 cnxn = new SqlConnection(connectionString);
+                // Not sure if that's necessary
                 cnxn.Open();
                 if (cnxn.State != ConnectionState.Open)
                 {
                     throw new Exception("Connection failed");
                 }
-                close_flag = true;
+                //
             }
             catch (Exception e)
             {
@@ -53,11 +46,10 @@ namespace Halaczkiewicz_z1
                 return;
             }
 
-            if (close_flag)
+            if (cnxn != null)
             {
-                this.DbConnection = cnxn;
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                DbConnection = cnxn;
+                DialogResult = DialogResult.OK;
             }
         }
 

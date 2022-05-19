@@ -32,7 +32,7 @@ namespace Halaczkiewicz_z1
             connection.Close();
         }
 
-        private static int DeleteStudentsGrades(DataTable dt, SqlConnection connection)
+        public static int DeleteStudentsGrades(DataTable dt, SqlConnection connection)
         {
             // TODO Test method
 

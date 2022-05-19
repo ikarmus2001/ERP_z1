@@ -22,6 +22,8 @@ namespace Halaczkiewicz_z1
     {
         SqlConnection cnxn;
         DataTable dt = new();
+        SqlDataAdapter da = new();
+        
 
         public MainForm(SqlConnection passedConnection)
         {
@@ -47,7 +49,8 @@ namespace Halaczkiewicz_z1
             // AVG(Cast(e.employee_level as Float)) as avg_level
 
             if (cnxn.State != ConnectionState.Open) { cnxn.Open(); }
-            new SqlDataAdapter(mainViewQuery, cnxn).Fill(dt);  // That was meant to update values, not append new ones >:(
+            da.SelectCommand = new SqlCommand(mainViewQuery, cnxn);
+            da.Fill(dt);
             cnxn.Close();
             dataGridView1.DataSource = dt;
             dataGridView1.Update();
@@ -66,10 +69,11 @@ namespace Halaczkiewicz_z1
             }
         }
 
-
         private void DataGridView1_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
         {
-            //dt.Remove()
+            DatabaseOperations.DeleteStudentsGrades();
+            string deleteRowString = $"DELETE FROM Stu"
+            da.DeleteCommand = new SqlCommand();
         }
 
         private void DataGridView_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
