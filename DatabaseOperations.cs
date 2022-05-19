@@ -14,21 +14,14 @@ namespace Halaczkiewicz_z1
         //}
         public static void CommitGrade(string studentIndex, string date, string grade, string? comment, SqlConnection connection)
         {
-            // CREATE TABLE Grades(
-            //  Student_ID int NOT NULL REFERENCES Students(Student_ID),
-            //  Grade tinyint NOT NULL,
-            //  Grade_date date,
-            //  Grade_comment VARCHAR(100)
-            // );
-
             string gradeCommit = "BEGIN TRANSACTION addGrade; INSERT INTO Grades ";
             if (comment == null || comment.Length == 0)
             {
-                gradeCommit += "(Student_ID, Grade, Grade_date) VALUES (" + studentIndex + ", " + grade.ToString() + ",  CONVERT(DATE, '" + date + "', 104)); ";
+                gradeCommit += $"(Student_ID, Grade, Grade_date) VALUES ({studentIndex}, {grade.ToString()}, CONVERT(DATE, '{date}', 104));";
             }
             else
             {
-                gradeCommit += "VALUES(" + studentIndex + ", " + grade.ToString() + ", CONVERT(DATE, '" + date + "', 104), '" + comment + "'); ";
+                gradeCommit += $"VALUES({studentIndex}, {grade.ToString()} CONVERT(DATE, '{date}', 104), '{comment}'); ";
             }
             gradeCommit += "COMMIT TRANSACTION addGrade;";
 
@@ -37,62 +30,6 @@ namespace Halaczkiewicz_z1
             cmd.ExecuteNonQuery();
             
             connection.Close();
-        }
-
-        public static void CommitChanges(DataTable dt, SqlConnection connection)
-        {
-            CommitDelete(dt, connection);
-            CommitAdd(dt, connection);
-            CommitUpdate(dt, connection);
-        }
-
-        #region Commits
-
-        #region Updates
-        private static void CommitUpdate(DataTable dt, SqlConnection connection)
-        {
-            UpdateStudents(dt, connection);
-        }
-
-        private static void UpdateStudents(DataTable dt, SqlConnection connection)
-        {
-            // TODO: guess I should use DataAdapter insted :/
-            throw new NotImplementedException();
-
-            //var x = dt.GetChanges(DataRowState.Modified).Rows;
-            //if (x != null)
-            //{
-            //    string update = 
-            //        @"BEGIN TRANSACTION uStudents 
-            //        UPDATE Students SET ";
-            //    foreach (DataRow row in x)
-            //    {
-            //        //row[0];
-            //    }
-            //}
-        }
-        #endregion
-        #region Adds
-        private static void CommitAdd(DataTable dt, SqlConnection connection)
-        {
-            AddStudents(dt, connection);
-        }
-
-        private static void AddStudents(DataTable dt, SqlConnection connection)
-        {
-            throw new NotImplementedException();
-        }
-        #endregion
-        #region Deletes
-        private static void CommitDelete(DataTable dt, SqlConnection connection)
-        {
-            DeleteStudentsGrades(dt, connection);
-            DeleteStudents(dt, connection);
-        }
-
-        private static void DeleteStudents(DataTable dt, SqlConnection connection)
-        {
-            throw new NotImplementedException();
         }
 
         private static int DeleteStudentsGrades(DataTable dt, SqlConnection connection)
@@ -123,9 +60,7 @@ namespace Halaczkiewicz_z1
             }
             return rowsAffected;
         }
-        #endregion
 
-        #endregion
         public static SqlConnection? EstablishingConnection(string[] args)
         {
             // overloading method would be better idea
