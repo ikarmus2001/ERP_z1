@@ -1,5 +1,4 @@
-﻿using System;
-using System.Data;
+﻿using System.Data;
 using System.Data.SqlClient;
 
 namespace Halaczkiewicz_z1
@@ -32,6 +31,19 @@ namespace Halaczkiewicz_z1
             connection.Close();
         }
 
+        public static void CommitStudent(string studentIndex, string name, string surname, string birthdate, SqlConnection connection)
+        {
+            string studentCommit = @$"
+                BEGIN TRANSACTION addStudent; INSERT INTO Students 
+                VALUES({studentIndex}, {name}, {surname} CONVERT(DATE, '{birthdate}', 104));
+                COMMIT TRANSACTION addGrade;";
+            
+            if (connection.State != ConnectionState.Open) { connection.Open(); }
+            SqlCommand cmd = new(studentCommit, connection);
+            cmd.ExecuteNonQuery();
+            connection.Close();
+        }
+
         public static int DeleteStudentsGrades(DataTable dt, SqlConnection connection)
         {
             // TODO Test method
@@ -61,9 +73,15 @@ namespace Halaczkiewicz_z1
             return rowsAffected;
         }
 
+        internal static int DeleteStudent(string studentIndex, SqlDataAdapter da)
+        {
+            string dcmd = $"DELETE FROM Students WHERE Student_ID = {studentIndex}";
+            da.DeleteCommand = new SqlCommand(dcmd);
+            return da.DeleteCommand.ExecuteNonQuery();
+        }
+
         public static SqlConnection? EstablishingConnection(string[] args)
         {
-            // overloading method would be better idea
             SqlConnection cnxn;
 
             if (args.Length > 0)

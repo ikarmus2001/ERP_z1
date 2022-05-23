@@ -45,7 +45,7 @@
             // comboBox_Student
             // 
             this.comboBox_Student.FormattingEnabled = true;
-            this.comboBox_Student.Location = new System.Drawing.Point(12, 31);
+            this.comboBox_Student.Location = new System.Drawing.Point(12, 34);
             this.comboBox_Student.Name = "comboBox_Student";
             this.comboBox_Student.Size = new System.Drawing.Size(192, 23);
             this.comboBox_Student.TabIndex = 0;
@@ -53,7 +53,7 @@
             // label_Student
             // 
             this.label_Student.AutoSize = true;
-            this.label_Student.Location = new System.Drawing.Point(12, 13);
+            this.label_Student.Location = new System.Drawing.Point(12, 16);
             this.label_Student.Name = "label_Student";
             this.label_Student.Size = new System.Drawing.Size(51, 15);
             this.label_Student.TabIndex = 1;
@@ -61,7 +61,7 @@
             // 
             // maskedTextBox_Date
             // 
-            this.maskedTextBox_Date.Location = new System.Drawing.Point(12, 140);
+            this.maskedTextBox_Date.Location = new System.Drawing.Point(12, 143);
             this.maskedTextBox_Date.Mask = "00/00/0000";
             this.maskedTextBox_Date.Name = "maskedTextBox_Date";
             this.maskedTextBox_Date.Size = new System.Drawing.Size(192, 23);
@@ -71,7 +71,7 @@
             // label_Date
             // 
             this.label_Date.AutoSize = true;
-            this.label_Date.Location = new System.Drawing.Point(12, 122);
+            this.label_Date.Location = new System.Drawing.Point(12, 125);
             this.label_Date.Name = "label_Date";
             this.label_Date.Size = new System.Drawing.Size(34, 15);
             this.label_Date.TabIndex = 3;
@@ -79,7 +79,7 @@
             // 
             // textBox_Comment
             // 
-            this.textBox_Comment.Location = new System.Drawing.Point(12, 248);
+            this.textBox_Comment.Location = new System.Drawing.Point(12, 251);
             this.textBox_Comment.Name = "textBox_Comment";
             this.textBox_Comment.Size = new System.Drawing.Size(192, 23);
             this.textBox_Comment.TabIndex = 4;
@@ -87,7 +87,7 @@
             // label_Comment
             // 
             this.label_Comment.AutoSize = true;
-            this.label_Comment.Location = new System.Drawing.Point(12, 230);
+            this.label_Comment.Location = new System.Drawing.Point(12, 233);
             this.label_Comment.Name = "label_Comment";
             this.label_Comment.Size = new System.Drawing.Size(119, 15);
             this.label_Comment.TabIndex = 5;
@@ -95,7 +95,7 @@
             // 
             // button_Add
             // 
-            this.button_Add.Location = new System.Drawing.Point(129, 288);
+            this.button_Add.Location = new System.Drawing.Point(129, 291);
             this.button_Add.Name = "button_Add";
             this.button_Add.Size = new System.Drawing.Size(75, 23);
             this.button_Add.TabIndex = 6;
@@ -105,7 +105,7 @@
             // 
             // button_Cancel
             // 
-            this.button_Cancel.Location = new System.Drawing.Point(12, 288);
+            this.button_Cancel.Location = new System.Drawing.Point(12, 291);
             this.button_Cancel.Name = "button_Cancel";
             this.button_Cancel.Size = new System.Drawing.Size(75, 23);
             this.button_Cancel.TabIndex = 7;
@@ -116,7 +116,7 @@
             // label_StudentIndex
             // 
             this.label_StudentIndex.AutoSize = true;
-            this.label_StudentIndex.Location = new System.Drawing.Point(12, 67);
+            this.label_StudentIndex.Location = new System.Drawing.Point(12, 70);
             this.label_StudentIndex.Name = "label_StudentIndex";
             this.label_StudentIndex.Size = new System.Drawing.Size(83, 15);
             this.label_StudentIndex.TabIndex = 8;
@@ -125,7 +125,7 @@
             // comboBox_StudentIndex
             // 
             this.comboBox_StudentIndex.FormattingEnabled = true;
-            this.comboBox_StudentIndex.Location = new System.Drawing.Point(12, 85);
+            this.comboBox_StudentIndex.Location = new System.Drawing.Point(12, 88);
             this.comboBox_StudentIndex.Name = "comboBox_StudentIndex";
             this.comboBox_StudentIndex.Size = new System.Drawing.Size(192, 23);
             this.comboBox_StudentIndex.TabIndex = 9;
@@ -133,7 +133,7 @@
             // comboBox_Grade
             // 
             this.comboBox_Grade.FormattingEnabled = true;
-            this.comboBox_Grade.Location = new System.Drawing.Point(12, 193);
+            this.comboBox_Grade.Location = new System.Drawing.Point(12, 196);
             this.comboBox_Grade.MaxDropDownItems = 6;
             this.comboBox_Grade.MaxLength = 1;
             this.comboBox_Grade.Name = "comboBox_Grade";
@@ -144,7 +144,7 @@
             // label_Grade
             // 
             this.label_Grade.AutoSize = true;
-            this.label_Grade.Location = new System.Drawing.Point(12, 175);
+            this.label_Grade.Location = new System.Drawing.Point(12, 178);
             this.label_Grade.Name = "label_Grade";
             this.label_Grade.Size = new System.Drawing.Size(41, 15);
             this.label_Grade.TabIndex = 11;

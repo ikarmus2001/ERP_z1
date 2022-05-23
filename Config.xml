@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<configuration>
+    <appSettings>
+        <config>
+			<Server_name>Kacper-PC\SQLEXPRESS</Server_name>
+		    <db_name>students_db</db_name>
+	    </config>
+		<config>
+			<Server_name>LENOVOTHINKPAD-\SQLEXPRESS</Server_name>
+		    <db_name>students_db</db_name>
+		</config> 
+    </appSettings>
+</configuration>
