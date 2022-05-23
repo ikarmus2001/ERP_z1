@@ -24,17 +24,18 @@ namespace Halaczkiewicz_z1
         DataTable dt = new();
         SqlDataAdapter da = new();
         
+        
 
         public MainForm(SqlConnection passedConnection)
         {
             cnxn = passedConnection;
             InitializeComponent();
+            SetupDataAdapter();
             UpdateDataGridView();
         }
 
-        private void UpdateDataGridView()
+        private void SetupDataAdapter()
         {
-            dt = new();
             string mainViewQuery = @"
             SELECT 
                 Students.Student_ID,
@@ -46,10 +47,22 @@ namespace Halaczkiewicz_z1
                 Students FULL JOIN
                     Grades ON Students.Student_ID = Grades.Student_ID
             GROUP BY Students.Student_ID, Student_name, Student_surname, Student_birthdate; ";
-            // AVG(Cast(e.employee_level as Float)) as avg_level
+            da.SelectCommand = new SqlCommand(mainViewQuery, cnxn);
+
+            
+
+            // todo
+            //da.UpdateCommand = new SqlCommand(, cnxn);
+
+
+            //da.DeleteCommand = new SqlCommand(, cnxn);
+        }
+
+        private void UpdateDataGridView()
+        {
+            dt = new();
 
             if (cnxn.State != ConnectionState.Open) { cnxn.Open(); }
-            da.SelectCommand = new SqlCommand(mainViewQuery, cnxn);
             da.Fill(dt);
             cnxn.Close();
             dataGridView1.DataSource = dt;
@@ -69,37 +82,56 @@ namespace Halaczkiewicz_z1
             }
         }
 
-        private void DataGridView1_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
-        {
-            DatabaseOperations.DeleteStudentsGrades();
-            string deleteRowString = $"DELETE FROM Stu"
-            da.DeleteCommand = new SqlCommand();
-        }
-
         private void DataGridView_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
             string msg = "Próbujesz usun¹æ wpis studenta, spowoduje to kaskadowe usuniêcie ocen. Kontynuowaæ?";
-            DialogResult result = MessageBox.Show("Ostrze¿enie!", msg, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult result = MessageBox.Show(msg, "Ostrze¿enie!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (result == DialogResult.No) { e.Cancel = true; }
-        }
-
-        private void button_uncommitedChanges_Click(object sender, EventArgs e)
-        {
-            using (var form = new UncommitedChangesForm(dt, cnxn))
+            else
             {
-                var result = form.ShowDialog();
-                if (result == DialogResult.OK)
+                string? deletedStudentIndex = e.Row.Cells[0].Value.ToString();
+                if (deletedStudentIndex != null && deletedStudentIndex.Length > 0)
                 {
-                    UpdateDataGridView();
+                    DatabaseOperations.DeleteStudentsGrades(dt, cnxn);
+                    DatabaseOperations.DeleteStudent(deletedStudentIndex, da);
                 }
             }
-            
-
         }
 
+        
         private void button_Update_Click(object sender, EventArgs e)
         {
             UpdateDataGridView();
+        }
+
+        //private void dataGridView1_UserAddedRow(object sender, DataGridViewRowEventArgs e)
+        //{
+        //    MessageBox.Show(e.ToString(), "es", MessageBoxButtons.OK);
+        //    //foreach (var item in collection)
+        //    //{
+        //    //    string insertCommand = $"""
+        //    //    INSERT INTO Students VALUES (
+        //    //        {Student_ID},
+        //    //     {Student_name},
+        //    //     {Student_surname},
+        //    //     {Student_birthdate});
+        //    //    """;
+        //    //    da.InsertCommand = new SqlCommand(insertCommand, cnxn);
+        //    //}
+        //}
+
+        private void button_addStudent_Click(object sender, EventArgs e)
+        {
+            
+            using (var addStudentForm = new AddStudentForm(dt, cnxn))
+            {
+                DialogResult result = addStudentForm.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    // Student commited
+                    UpdateDataGridView();
+                }
+            }
         }
     }
 }

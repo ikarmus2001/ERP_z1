@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<configuration>
+    <appSettings>
+        <config>
+			<add key="Server" value="Kacper-PC\SQLEXPRESS"/>
+		    <add key="Database" value="students_db"/>
+	    </config>
+		<config>
+			<add key="Server" value="LENOVOTHINKPAD-\SQLEXPRESS"/>
+		    <add key="Database" value="students_db"/>
+		</config> 
+    </appSettings>
+</configuration>

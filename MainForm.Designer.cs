@@ -32,15 +32,15 @@
             this.button_AddGrade = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.mainFormBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.button_uncommitedChanges = new System.Windows.Forms.Button();
             this.button_Update = new System.Windows.Forms.Button();
+            this.button_addStudent = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainFormBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // button_AddGrade
             // 
-            this.button_AddGrade.Location = new System.Drawing.Point(12, 9);
+            this.button_AddGrade.Location = new System.Drawing.Point(500, 9);
             this.button_AddGrade.Name = "button_AddGrade";
             this.button_AddGrade.Size = new System.Drawing.Size(100, 30);
             this.button_AddGrade.TabIndex = 0;
@@ -63,19 +63,9 @@
             // 
             this.mainFormBindingSource.DataSource = typeof(Halaczkiewicz_z1.MainForm);
             // 
-            // button_uncommitedChanges
-            // 
-            this.button_uncommitedChanges.Location = new System.Drawing.Point(561, 9);
-            this.button_uncommitedChanges.Name = "button_uncommitedChanges";
-            this.button_uncommitedChanges.Size = new System.Drawing.Size(139, 30);
-            this.button_uncommitedChanges.TabIndex = 4;
-            this.button_uncommitedChanges.Text = "Uncommited changes";
-            this.button_uncommitedChanges.UseVisualStyleBackColor = true;
-            this.button_uncommitedChanges.Click += new System.EventHandler(this.button_uncommitedChanges_Click);
-            // 
             // button_Update
             // 
-            this.button_Update.Location = new System.Drawing.Point(118, 9);
+            this.button_Update.Location = new System.Drawing.Point(12, 9);
             this.button_Update.Name = "button_Update";
             this.button_Update.Size = new System.Drawing.Size(94, 30);
             this.button_Update.TabIndex = 5;
@@ -83,13 +73,23 @@
             this.button_Update.UseVisualStyleBackColor = true;
             this.button_Update.Click += new System.EventHandler(this.button_Update_Click);
             // 
+            // button_addStudent
+            // 
+            this.button_addStudent.Location = new System.Drawing.Point(606, 9);
+            this.button_addStudent.Name = "button_addStudent";
+            this.button_addStudent.Size = new System.Drawing.Size(94, 30);
+            this.button_addStudent.TabIndex = 6;
+            this.button_addStudent.Text = "Add student";
+            this.button_addStudent.UseVisualStyleBackColor = true;
+            this.button_addStudent.Click += new System.EventHandler(this.button_addStudent_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(712, 441);
+            this.Controls.Add(this.button_addStudent);
             this.Controls.Add(this.button_Update);
-            this.Controls.Add(this.button_uncommitedChanges);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button_AddGrade);
             this.Name = "MainForm";
@@ -105,7 +105,7 @@
         private Button button_AddGrade;
         private DataGridView dataGridView1;
         private BindingSource mainFormBindingSource;
-        private Button button_uncommitedChanges;
         private Button button_Update;
+        private Button button_addStudent;
     }
 }
