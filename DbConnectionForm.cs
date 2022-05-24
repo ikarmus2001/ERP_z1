@@ -11,7 +11,22 @@ namespace Halaczkiewicz_z1
         public DbConnectionForm()
         {
             InitializeComponent();
-            // TODO: Read/Write options to config file
+#pragma warning disable CS8619 // Obsługa wartości null dla typów referencyjnych w wartości jest niezgodna z typem docelowym.
+            string[] configs = ConfigurationManager.AppSettings.AllKeys;
+#pragma warning restore CS8619 // Obsługa wartości null dla typów referencyjnych w wartości jest niezgodna z typem docelowym.
+            if (configs.Length > 0)
+            {
+                string[] snames = new string[configs.Length];
+                string[] dbnames = new string[configs.Length];
+                for (int i=0; i < configs.Length; i++)
+                {
+                    //snames[i] = configs[i][0];
+                    //dbnames[i] = configs[i][1];
+                }
+                comboBox_serverName.DataSource = snames;
+                comboBox_dbName.DataSource = dbnames;
+            }
+
 
         }
 
@@ -21,7 +36,7 @@ namespace Halaczkiewicz_z1
         {
             SqlConnection cnxn;
 
-            string connectionString = $"Data Source={textBox_Server.Text}; Initial Catalog={textBox_DatabaseName.Text}" +
+            string connectionString = $"Data Source={comboBox_serverName.Text}; Initial Catalog={comboBox_dbName.Text}" +
                 $"; User Id={textBox_Login.Text}; Password={textBox_Password.Text}";
 
             try

@@ -35,8 +35,8 @@
             this.label_Password = new System.Windows.Forms.Label();
             this.textBox_Password = new System.Windows.Forms.TextBox();
             this.label_DatabaseName = new System.Windows.Forms.Label();
-            this.textBox_Server = new System.Windows.Forms.TextBox();
-            this.textBox_DatabaseName = new System.Windows.Forms.TextBox();
+            this.comboBox_serverName = new System.Windows.Forms.ComboBox();
+            this.comboBox_dbName = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // textBox_Login
@@ -111,29 +111,29 @@
             this.label_DatabaseName.TabIndex = 6;
             this.label_DatabaseName.Text = "Database name:";
             // 
-            // textBox_Server
+            // comboBox_serverName
             // 
-            this.textBox_Server.Location = new System.Drawing.Point(12, 27);
-            this.textBox_Server.Name = "textBox_Server";
-            this.textBox_Server.Size = new System.Drawing.Size(211, 23);
-            this.textBox_Server.TabIndex = 1;
-            this.textBox_Server.Text = "Kacper-PC\\SQLEXPRESS";
+            this.comboBox_serverName.FormattingEnabled = true;
+            this.comboBox_serverName.Location = new System.Drawing.Point(12, 27);
+            this.comboBox_serverName.Name = "comboBox_serverName";
+            this.comboBox_serverName.Size = new System.Drawing.Size(211, 23);
+            this.comboBox_serverName.TabIndex = 9;
             // 
-            // textBox_DatabaseName
+            // comboBox_dbName
             // 
-            this.textBox_DatabaseName.Location = new System.Drawing.Point(12, 79);
-            this.textBox_DatabaseName.Name = "textBox_DatabaseName";
-            this.textBox_DatabaseName.Size = new System.Drawing.Size(211, 23);
-            this.textBox_DatabaseName.TabIndex = 8;
-            this.textBox_DatabaseName.Text = "students_db";
+            this.comboBox_dbName.FormattingEnabled = true;
+            this.comboBox_dbName.Location = new System.Drawing.Point(12, 79);
+            this.comboBox_dbName.Name = "comboBox_dbName";
+            this.comboBox_dbName.Size = new System.Drawing.Size(211, 23);
+            this.comboBox_dbName.TabIndex = 10;
             // 
             // DbConnectionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(239, 295);
-            this.Controls.Add(this.textBox_DatabaseName);
-            this.Controls.Add(this.textBox_Server);
+            this.Controls.Add(this.comboBox_dbName);
+            this.Controls.Add(this.comboBox_serverName);
             this.Controls.Add(this.label_DatabaseName);
             this.Controls.Add(this.label_Password);
             this.Controls.Add(this.textBox_Password);
@@ -141,7 +141,9 @@
             this.Controls.Add(this.label_ServerName);
             this.Controls.Add(this.button_SignIn);
             this.Controls.Add(this.textBox_Login);
+            this.MaximizeBox = false;
             this.Name = "DbConnectionForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Connect to database";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -157,7 +159,7 @@
         private Label label_Password;
         private TextBox textBox_Password;
         private Label label_DatabaseName;
-        private TextBox textBox_Server;
-        private TextBox textBox_DatabaseName;
+        private ComboBox comboBox_serverName;
+        private ComboBox comboBox_dbName;
     }
 }

@@ -1,15 +1,15 @@
 /*
-    Umo¿liwia dodanie do bazy informacji i studentach (Imiê, Nazwisko, Numer indeksu, Data urodzenia)
-    Umo¿liwia wyœwietlenie informacji o studentach i wyszukanie studenta na podstawie Imienia, Nazwiska, Numeru indeksu, Daty urodzenia
-    Umo¿liwia edytowanie informacji o studentach
-    Umo¿liwia usuniêcie studenta
-    Umo¿liwia dodanie oceny dla studenta, który ju¿ zosta³ dodany do bazy (obs³uga dodania oceny w nowym oknie)
+    Umoï¿½liwia dodanie do bazy informacji i studentach (Imiï¿½, Nazwisko, Numer indeksu, Data urodzenia)
+    Umoï¿½liwia wyï¿½wietlenie informacji o studentach i wyszukanie studenta na podstawie Imienia, Nazwiska, Numeru indeksu, Daty urodzenia
+    Umoï¿½liwia edytowanie informacji o studentach
+    Umoï¿½liwia usuniï¿½cie studenta
+    Umoï¿½liwia dodanie oceny dla studenta, ktï¿½ry juï¿½ zostaï¿½ dodany do bazy (obsï¿½uga dodania oceny w nowym oknie)
 
  
 
-    Proszê przes³aæ kody Ÿród³owe, jak równie¿ kody do tworzenia tabel, procedur sk³adowanych
-    Najlepiej ¿eby to by³ MSSQL
-    Pod³¹czenie do bazy danych proszê umieœciæ w pliku konfiguracyjnym
+    Proszï¿½ przesï¿½aï¿½ kody ï¿½rï¿½dï¿½owe, jak rï¿½wnieï¿½ kody do tworzenia tabel, procedur skï¿½adowanych
+    Najlepiej ï¿½eby to byï¿½ MSSQL
+    Podï¿½ï¿½czenie do bazy danych proszï¿½ umieï¿½ciï¿½ w pliku konfiguracyjnym
 */
 
 
@@ -84,8 +84,8 @@ namespace Halaczkiewicz_z1
 
         private void DataGridView_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
-            string msg = "Próbujesz usun¹æ wpis studenta, spowoduje to kaskadowe usuniêcie ocen. Kontynuowaæ?";
-            DialogResult result = MessageBox.Show(msg, "Ostrze¿enie!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            string msg = "Prï¿½bujesz usunï¿½ï¿½ wpis studenta, spowoduje to kaskadowe usuniï¿½cie ocen. Kontynuowaï¿½?";
+            DialogResult result = MessageBox.Show(msg, "Ostrzeï¿½enie!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (result == DialogResult.No) { e.Cancel = true; }
             else
             {

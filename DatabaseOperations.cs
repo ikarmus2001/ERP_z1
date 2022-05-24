@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace Halaczkiewicz_z1
@@ -83,6 +84,7 @@ namespace Halaczkiewicz_z1
         public static SqlConnection? EstablishingConnection(string[] args)
         {
             SqlConnection cnxn;
+            
 
             if (args.Length > 0)
             {
