@@ -21,7 +21,7 @@ namespace Halaczkiewicz_z1
             }
             else
             {
-                gradeCommit += $"VALUES({studentIndex}, {grade.ToString()} CONVERT(DATE, '{date}', 104), '{comment}'); ";
+                gradeCommit += $"VALUES({studentIndex}, {grade.ToString()}, CONVERT(DATE, '{date}', 104), '{comment}'); ";
             }
             gradeCommit += "COMMIT TRANSACTION addGrade;";
 
@@ -35,8 +35,9 @@ namespace Halaczkiewicz_z1
         public static void CommitStudent(string studentIndex, string name, string surname, string birthdate, SqlConnection connection)
         {
             string studentCommit = @$"
-                BEGIN TRANSACTION addStudent; INSERT INTO Students 
-                VALUES({studentIndex}, {name}, {surname} CONVERT(DATE, '{birthdate}', 104));
+                BEGIN TRANSACTION addStudent; 
+                INSERT INTO Students (Student_ID, Student_name, Student_surname, Student_birthdate)
+                VALUES({studentIndex}, '{name}', '{surname}', CONVERT(DATE, '{birthdate}', 104));
                 COMMIT TRANSACTION addGrade;";
             
             if (connection.State != ConnectionState.Open) { connection.Open(); }
@@ -108,16 +109,27 @@ namespace Halaczkiewicz_z1
                 {
                     DialogResult result = connectionForm.ShowDialog();  
                     
-                    // probably ifcheck might be simplified
                     if (result == DialogResult.OK)
                     {
                         cnxn = connectionForm.DbConnection;
                         cnxn.Close();
                         return cnxn;
                     }
-                    else { return null; }  // Not sure what might happen without that
+                    else { return null; }  // Not sure if that's necessary
                 }
             }
+        }
+
+        internal static int UpdateStudent(DataGridViewCell cell, SqlDataAdapter da, SqlConnection connection)
+        {
+            string updateString = @$"
+                        UPDATE Students 
+                        SET {cell.OwningColumn.Name} = '{cell.Value}'
+                        WHERE Student_ID = {cell.OwningRow.Cells[0].Value};";
+            connection.Open();
+            da.UpdateCommand = new SqlCommand(updateString, connection);
+            int result =  da.UpdateCommand.ExecuteNonQuery();
+            return result;
         }
     }
 }

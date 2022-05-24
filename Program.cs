@@ -17,6 +17,7 @@ namespace Halaczkiewicz_z1
             cnxn = DatabaseOperations.EstablishingConnection(args);
             if (cnxn != null)
             {
+                // todo add connection to config file
                 Application.Run(new MainForm(cnxn));
             }
             else

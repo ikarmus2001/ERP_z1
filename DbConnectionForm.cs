@@ -2,7 +2,6 @@
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Collections.Specialized;
-using System.Configuration.dll;
 
 namespace Halaczkiewicz_z1
 {
@@ -11,23 +10,30 @@ namespace Halaczkiewicz_z1
         public DbConnectionForm()
         {
             InitializeComponent();
-#pragma warning disable CS8619 // Obsługa wartości null dla typów referencyjnych w wartości jest niezgodna z typem docelowym.
-            string[] configs = ConfigurationManager.AppSettings.AllKeys;
-#pragma warning restore CS8619 // Obsługa wartości null dla typów referencyjnych w wartości jest niezgodna z typem docelowym.
-            if (configs.Length > 0)
+            // nie wiem czy jakos inaczej sie obchodzi takie bledy niz dodaniem nullable
+            //#pragma warning disable CS8619 // Obsługa wartości null dla typów referencyjnych w wartości jest niezgodna z typem docelowym.
+            string?[] configs = ConfigurationManager.AppSettings.AllKeys;
+            //#pragma warning restore CS8619 // Obsługa wartości null dla typów referencyjnych w wartości jest niezgodna z typem docelowym.
+
+            if (configs != null && configs.Length > 0 && configs.Length % 2 == 0)
             {
-                string[] snames = new string[configs.Length];
-                string[] dbnames = new string[configs.Length];
-                for (int i=0; i < configs.Length; i++)
+                string?[] snames = new string[configs.Length];
+                string?[] dbnames = new string[configs.Length];
+                int pair = 0;
+                for (int i = 0; i < configs.Length; i += 2)
                 {
-                    //snames[i] = configs[i][0];
-                    //dbnames[i] = configs[i][1];
+                    // nie wiem czy jakos inaczej sie obchodzi takie bledy niz dodaniem nullable
+                    //#pragma warning disable CS8601 // Możliwe przypisanie odwołania o wartości null.
+                    snames[pair] = ConfigurationManager.AppSettings.Get(configs[i]);
+                    dbnames[pair] = ConfigurationManager.AppSettings.Get(configs[i + 1]);
+                    //#pragma warning restore CS8601 // Możliwe przypisanie odwołania o wartości null.
+                    pair += 1;
                 }
                 comboBox_serverName.DataSource = snames;
                 comboBox_dbName.DataSource = dbnames;
+                comboBox_serverName.Text = snames[0];
+                comboBox_dbName.Text = dbnames[0];
             }
-
-
         }
 
         public SqlConnection DbConnection {get;set;}
@@ -42,20 +48,14 @@ namespace Halaczkiewicz_z1
             try
             {
                 cnxn = new SqlConnection(connectionString);
-                // Not sure if that's necessary
                 cnxn.Open();
-                if (cnxn.State != ConnectionState.Open)
-                {
-                    throw new Exception("Connection failed");
-                }
-                //
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.Message);
                 return;
             }
-
+            cnxn.Close();
             if (cnxn != null)
             {
                 DbConnection = cnxn;
@@ -67,12 +67,12 @@ namespace Halaczkiewicz_z1
 
         private void Button_SignIn_Clickable(object sender, EventArgs e)
         {
-            // Login + Password are required due to login method to my db
-            // TODO LATER: tho i should play sound when some field is empty, not disable button
-            if (!String.IsNullOrEmpty(this.textBox_Login.Text) && !String.IsNullOrEmpty(this.textBox_Password.Text))
+            if (String.IsNullOrEmpty(textBox_Login.Text) || String.IsNullOrEmpty(textBox_Password.Text) || String.IsNullOrEmpty(comboBox_serverName.Text) || String.IsNullOrEmpty(comboBox_dbName.Text))
             {
-                this.button_SignIn.Enabled = true;
+                button_SignIn.Enabled = false;
+                return;
             }
+            button_SignIn.Enabled = true;
         }
 
         private void Textbox_Credentials_TextChanged(object sender, EventArgs e)
@@ -82,9 +82,14 @@ namespace Halaczkiewicz_z1
 
         private void Button_SignIn_Clicked(object sender, EventArgs e)
         {
-            if (this.button_SignIn.Enabled == true)  // Idk if that's necessary check
+            Button_SignIn_Clickable(sender, e);
+            if (button_SignIn.Enabled == true)  // Idk if that's necessary check
             {
                 EstablishDbConnection();
+            }
+            else
+            {
+                System.Media.SystemSounds.Exclamation.Play();
             }
         }
 

@@ -39,9 +39,9 @@ namespace Halaczkiewicz_z1
             string mainViewQuery = @"
             SELECT 
                 Students.Student_ID,
-	            Student_name                        'Name',
-	            Student_surname                     'Surname',
-	            Student_birthdate                   'Date of birth',
+	            Student_name                        ,
+	            Student_surname                     ,
+	            Student_birthdate                   ,
 	            ROUND(AVG(Cast(Grade as Float)), 2) 'Average score'
             FROM
                 Students FULL JOIN
@@ -129,6 +129,34 @@ namespace Halaczkiewicz_z1
                 if (result == DialogResult.OK)
                 {
                     // Student commited
+                    UpdateDataGridView();
+                }
+            }
+        }
+
+        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewCell? currentCell = dataGridView1.CurrentCell;
+            // todo ograniczenia edycji? np indexy, typy zmiennych
+            if (currentCell.OwningColumn.Name == "Student_ID")
+            {
+                MessageBox.Show("Nie można wprowadzać zmian w ID");
+                UpdateDataGridView();
+            }
+            else if (currentCell.OwningColumn.Name == "Average score")
+            {
+                MessageBox.Show("Nie można wprowadzać zmian w średniej");
+                UpdateDataGridView();
+            }
+            else
+            {
+                try
+                {
+                    DatabaseOperations.UpdateStudent(currentCell, da, cnxn);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message + "\n Nie wprowadzono zmian, proszę wprowadzić poprawne dane");
                     UpdateDataGridView();
                 }
             }
